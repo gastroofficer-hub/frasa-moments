@@ -33,7 +33,10 @@ const socials = [
 ];
 
 export function Contact() {
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  type FieldErrors = { name?: string; email?: string; phone?: string; message?: string };
+
+export function Contact() {
+  const [errors, setErrors] = useState<FieldErrors>({});
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,8 +49,8 @@ export function Contact() {
     });
 
     if (!parsed.success) {
-      const next: Record<string, string> = {};
-      for (const issue of parsed.error.issues) next[String(issue.path[0])] = issue.message;
+      const next: FieldErrors = {};
+      for (const issue of parsed.error.issues) next[issue.path[0] as keyof FieldErrors] = issue.message;
       setErrors(next);
       return;
     }
