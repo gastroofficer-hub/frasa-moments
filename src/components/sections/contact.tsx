@@ -32,8 +32,7 @@ const socials = [
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
 ];
 
-export function Contact() {
-  type FieldErrors = { name?: string; email?: string; phone?: string; message?: string };
+type FieldErrors = { name?: string; email?: string; phone?: string; message?: string };
 
 export function Contact() {
   const [errors, setErrors] = useState<FieldErrors>({});
