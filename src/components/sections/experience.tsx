@@ -31,7 +31,7 @@ export function Gallery() {
           <h2 className="mt-4 text-3xl sm:text-4xl">Gallery</h2>
         </Reveal>
 
-        <div className="mt-14 grid auto-rows-[180px] grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="mt-14 grid auto-rows-[180px] grid-flow-dense grid-cols-2 gap-4 md:grid-cols-4">
           {galleryImages.map((img, i) => (
             <button
               key={img.src + i}
