@@ -28,7 +28,7 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Portfolio</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl">Gallery</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl">Galerie</h2>
         </Reveal>
 
         <div className="mt-14 grid auto-rows-[180px] grid-flow-dense grid-cols-2 gap-4 md:grid-cols-4">
@@ -37,7 +37,7 @@ export function Gallery() {
               key={img.src + i}
               type="button"
               onClick={() => setLightbox(i)}
-              aria-label={`Open image: ${img.alt}`}
+              aria-label={`Otevřít obrázek: ${img.alt}`}
               className={cn(
                 "group relative overflow-hidden rounded-2xl shadow-soft",
                 img.span === "tall" && "row-span-2",
@@ -50,8 +50,8 @@ export function Gallery() {
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-110"
               />
-              <span className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/35" />
-              <span className="absolute inset-x-0 bottom-0 translate-y-3 p-4 text-left text-xs text-primary-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <span className="absolute inset-0 bg-background/0 transition-colors duration-500 group-hover:bg-background/50" />
+              <span className="absolute inset-x-0 bottom-0 translate-y-3 p-4 text-left text-xs text-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 {img.alt}
               </span>
             </button>
@@ -64,21 +64,21 @@ export function Gallery() {
           role="dialog"
           aria-modal="true"
           aria-label={current.alt}
-          className="fixed inset-0 z-60 flex items-center justify-center bg-primary/92 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-60 flex items-center justify-center bg-background/95 p-4 backdrop-blur-sm"
           onClick={() => setLightbox(null)}
         >
           <button
             type="button"
-            aria-label="Close gallery"
-            className="absolute top-5 right-5 text-primary-foreground"
+            aria-label="Zavřít galerii"
+            className="absolute top-5 right-5 text-foreground"
             onClick={() => setLightbox(null)}
           >
             <X className="h-7 w-7" />
           </button>
           <button
             type="button"
-            aria-label="Previous image"
-            className="absolute left-3 text-primary-foreground sm:left-8"
+            aria-label="Předchozí obrázek"
+            className="absolute left-3 text-foreground sm:left-8"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox((i) => ((i ?? 0) - 1 + galleryImages.length) % galleryImages.length);
@@ -92,14 +92,14 @@ export function Gallery() {
               alt={current.alt}
               className="max-h-[78vh] w-full rounded-2xl object-contain"
             />
-            <figcaption className="mt-3 text-center text-sm text-primary-foreground/80">
+            <figcaption className="mt-3 text-center text-sm text-muted-foreground">
               {current.alt}
             </figcaption>
           </figure>
           <button
             type="button"
-            aria-label="Next image"
-            className="absolute right-3 text-primary-foreground sm:right-8"
+            aria-label="Další obrázek"
+            className="absolute right-3 text-foreground sm:right-8"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox((i) => ((i ?? 0) + 1) % galleryImages.length);
@@ -121,13 +121,13 @@ export function Reviews() {
     <section className="py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-5 text-center lg:px-8">
         <Reveal>
-          <p className="eyebrow">Testimonials</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl">What our clients say</h2>
+          <p className="eyebrow">Reference</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl">Co říkají klienti</h2>
         </Reveal>
 
         <Reveal delay={100} className="mt-12">
           <div className="rounded-3xl bg-beige p-8 shadow-soft sm:p-12">
-            <div className="flex justify-center gap-1" aria-label={`${review.rating} out of 5 stars`}>
+            <div className="flex justify-center gap-1" aria-label={`${review.rating} z 5 hvězdiček`}>
               {Array.from({ length: review.rating }).map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-gold text-gold" />
               ))}
@@ -150,7 +150,7 @@ export function Reviews() {
             <Button
               variant="outline"
               size="icon"
-              aria-label="Previous review"
+              aria-label="Předchozí hodnocení"
               onClick={() => setIndex((i) => (i - 1 + reviews.length) % reviews.length)}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -160,7 +160,7 @@ export function Reviews() {
                 <button
                   key={r.name}
                   type="button"
-                  aria-label={`Show review from ${r.name}`}
+                  aria-label={`Zobrazit hodnocení od ${r.name}`}
                   aria-current={i === index}
                   onClick={() => setIndex(i)}
                   className={cn(
@@ -173,7 +173,7 @@ export function Reviews() {
             <Button
               variant="outline"
               size="icon"
-              aria-label="Next review"
+              aria-label="Další hodnocení"
               onClick={() => setIndex((i) => (i + 1) % reviews.length)}
             >
               <ChevronRight className="h-4 w-4" />
@@ -190,8 +190,8 @@ export function Process() {
     <section className="bg-beige py-24 sm:py-32">
       <div className="mx-auto max-w-5xl px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">How it works</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl">Ordering process</h2>
+          <p className="eyebrow">Jak to probíhá</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl">Průběh objednávky</h2>
         </Reveal>
 
         <ol className="relative mt-14 space-y-8 border-l border-border pl-8 sm:pl-12">
@@ -215,8 +215,8 @@ export function Faq() {
     <section id="faq" className="py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
         <Reveal className="text-center">
-          <p className="eyebrow">Good to know</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl">Frequently asked questions</h2>
+          <p className="eyebrow">Dobré vědět</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl">Časté dotazy</h2>
         </Reveal>
         <Reveal delay={80} className="mt-12">
           <Accordion type="single" collapsible className="w-full">
