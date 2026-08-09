@@ -95,7 +95,7 @@ function AdminPage() {
     const res = draft.id
       ? await supabase.from("products").update(payload).eq("id", draft.id)
       : await supabase.from("products").insert(payload);
-    if (res.error) return toast.error(res.error.message);
+    if (res.error) { toast.error(res.error.message); return; }
     toast.success("Uloženo");
     setDraft(empty);
     refresh();
@@ -103,7 +103,7 @@ function AdminPage() {
 
   const remove = async (id: string) => {
     const { error } = await supabase.from("products").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Smazáno");
     refresh();
   };
@@ -237,7 +237,7 @@ function AdminPage() {
                   const url = await uploadImage(file);
                   if (!url) return;
                   const { error } = await supabase.from("cakes").update({ image_url: url }).eq("id", c.id);
-                  if (error) return toast.error(error.message);
+                  if (error) { toast.error(error.message); return; }
                   toast.success("Fotka změněna");
                   refresh();
                 }}
