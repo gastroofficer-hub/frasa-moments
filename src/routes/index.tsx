@@ -3,13 +3,14 @@ import { SiteHeader } from "@/components/site-header";
 import { ShopProvider } from "@/components/shop-store";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Hero, WhyChooseUs } from "@/components/sections/hero";
-import { Categories, Events, FeaturedProducts } from "@/components/sections/showcase";
+import { Categories, Events, FeaturedProducts, VersionsShowcase } from "@/components/sections/showcase";
+import { Cakes, Delivery } from "@/components/sections/delivery-cakes";
 import { Faq, Gallery, Process, Reviews } from "@/components/sections/experience";
 import { Contact, SiteFooter } from "@/components/sections/contact";
 
-const title = "LUXE Catering — Premium Canapés & Finger Food for Every Occasion";
+const title = "FRÁŠA MOMENTS — Kanapky, jednohubky a mini dezerty | Svitavy";
 const description =
-  "Fresh canapés, finger food, savory specialties and handcrafted mini desserts for weddings, corporate events, conferences and private parties. Delivered with elegance.";
+  "Ručně dělané kanapky, jednohubky, slané speciality a mini dezerty ve verzi DELUXE a STANDART. Slané i sladké dorty na objednávku. Rozvoz do 60 km od Svitav.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -19,7 +20,6 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -29,19 +29,17 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FoodEstablishment",
-          name: "LUXE Catering",
+          name: "FRÁŠA MOMENTS",
           description,
-          servesCuisine: "Catering, Canapés, Finger Food, Patisserie",
-          telephone: "+353 1 555 0142",
-          email: "hello@luxecatering.com",
+          servesCuisine: "Catering, kanapky, jednohubky, dezerty, dorty",
+          telephone: "+420 777 123 456",
+          email: "info@frasamoments.cz",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "18 Harcourt Street",
-            addressLocality: "Dublin",
-            postalCode: "D02",
-            addressCountry: "IE",
+            addressLocality: "Svitavy",
+            addressRegion: "Pardubický kraj",
+            addressCountry: "CZ",
           },
-          openingHours: ["Mo-Fr 08:00-19:00", "Sa 09:00-17:00"],
           aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "218" },
         }),
       },
@@ -57,8 +55,11 @@ function Index() {
       <main>
         <Hero />
         <WhyChooseUs />
+        <VersionsShowcase />
         <Categories />
         <FeaturedProducts />
+        <Delivery />
+        <Cakes />
         <Events />
         <Gallery />
         <Reviews />
