@@ -2,6 +2,7 @@ import { ArrowRight, ChefHat, Clock, Leaf, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import hero from "@/assets/hero-platters.jpg";
+import logoAsset from "@/assets/frasa-moments-logo.png.asset.json";
 
 export function Hero() {
   return (
@@ -18,6 +19,13 @@ export function Hero() {
 
       <div className="mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-5 pt-28 pb-20 lg:px-8">
         <Reveal className="max-w-2xl">
+          <img
+            src={logoAsset.url}
+            alt="Logo FRÁŠA MOMENTS se zlatým vavřínovým věncem"
+            width={768}
+            height={768}
+            className="mb-6 h-32 w-32 rounded-full object-cover shadow-gold sm:h-40 sm:w-40"
+          />
           <p className="eyebrow">Ručně připravováno každý den</p>
           <h1 className="mt-5 text-[2.75rem] leading-[1.05] font-semibold text-balance sm:text-6xl lg:text-7xl">
             FRÁŠA <span className="text-gold italic">MOMENTS</span>

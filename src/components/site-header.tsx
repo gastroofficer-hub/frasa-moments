@@ -16,6 +16,8 @@ import {
 import { productsQuery, type Product } from "@/lib/catalog";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
+import logoAsset from "@/assets/frasa-moments-logo.png.asset.json";
 
 const navLinks = [
   { href: "#categories", label: "Kategorie" },
@@ -30,12 +32,10 @@ const navLinks = [
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <a href="#top" className={cn("flex shrink-0 items-baseline gap-2", className)} aria-label="FRÁŠA MOMENTS — domů">
-      <span className="font-display text-lg font-semibold tracking-[0.22em] text-gold uppercase sm:text-xl">
-        Fráša
-      </span>
-      <span className="font-display text-lg font-semibold tracking-[0.22em] uppercase sm:text-xl">
-        Moments
+    <a href="#top" className={cn("flex shrink-0 items-center gap-3", className)} aria-label="FRÁŠA MOMENTS — domů">
+      <img src={logoAsset.url} alt="" className="h-11 w-11 rounded-full object-cover shadow-gold" />
+      <span className="hidden font-display text-lg font-semibold tracking-[0.22em] uppercase sm:inline sm:text-xl">
+        <span className="text-gold">Fráša</span> Moments
       </span>
     </a>
   );
@@ -280,6 +280,7 @@ export function SiteHeader() {
           >
             <Menu className="h-5 w-5" />
           </Button>
+          <ThemeToggle />
         </div>
       </div>
 
